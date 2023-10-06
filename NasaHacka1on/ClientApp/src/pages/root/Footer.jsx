@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="footer container-fluid py-3 fixed-bottom">
+    <footer className="footer container-fluid py-3">
       <div className="row row-cols-1 row-cols-lg-2 align-items-center gy-2 px-3 container-sm mx-auto">
         <div className="col text-center text-lg-start">
           &copy; 2023 CommunityCodeHub

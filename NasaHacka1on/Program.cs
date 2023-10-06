@@ -57,7 +57,7 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
-
+builder.Services.AddCors();
 builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
 
 var app = builder.Build();
@@ -83,7 +83,7 @@ app.UseHttpsRedirection();
 app.UseRouting();
 
 app.UseStaticFiles();
-
+app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:44418"));
 app.UseAuthentication();
 
 app.UseAuthorization();

@@ -1,5 +1,5 @@
 class AuthService {
-  #url = "https://localhost:7120/api/account/";
+  #url = "/api/account/";
 
   async createAccount(user) {
     const url = this.#url + "sign-up";
