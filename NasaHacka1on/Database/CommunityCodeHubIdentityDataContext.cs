@@ -66,6 +66,13 @@ public abstract class CommunityCodeHubIdentityDataContext : IdentityDbContext<Id
         //.SetValueComparer(valueComparer);
     }
 
+    public void ConfigureTechFocusTypes(ModelBuilder modelBuilder)
+    {
+        var techfocus = modelBuilder.Entity<TechFocusModel>();
+
+        techfocus.HasKey(t =>t.Id);
+    }
+
     private static void SeedRoles(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<IdentityRole<Guid>>().HasData(

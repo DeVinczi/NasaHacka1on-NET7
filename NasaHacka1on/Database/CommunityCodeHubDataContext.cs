@@ -15,4 +15,6 @@ public abstract class CommunityCodeHubDataContext : CommunityCodeHubIdentityData
     }
 
     public DbSet<User> ApplicationUser { get; set; }
+    public DbSet<Project> Projects{ get; set; }
+    public DbSet<TechFocusModel> TechFocus { get; set; }
 }

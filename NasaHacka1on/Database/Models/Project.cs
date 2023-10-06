@@ -1,11 +1,12 @@
 ﻿
 namespace NasaHacka1on.Database.Models;
 
-public class Projects : IIdentifiable, IDeletable
+public class Project : IIdentifiable, IDeletable
 {
     public Guid Id { get; set; }
     public DateTimeOffset? DeletedOnUtc { get; set; }
     public string Name { get; set; }
+    public string Description { get; set; }
     public string GithubLink { get; set; }
     public string WebsiteLink { get; set; }
 

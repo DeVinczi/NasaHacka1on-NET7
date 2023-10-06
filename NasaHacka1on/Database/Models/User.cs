@@ -18,5 +18,5 @@ public class User : IIdentifiable, IDeletable
 
     public string[] Interests { get; set; }
 
-    public virtual ICollection<Projects> Projects { get; set; }
+    public virtual ICollection<Project> Projects { get; set; }
 }

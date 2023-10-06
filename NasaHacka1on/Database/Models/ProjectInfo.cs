@@ -4,4 +4,5 @@ public class ProjectInfo : IIdentifiable
 {
     public Guid Id { get; set; }
 
+    
 }
