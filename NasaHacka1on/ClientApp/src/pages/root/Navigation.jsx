@@ -54,14 +54,14 @@ const Navigation = () => {
                 </NavLink>
               </li>
             </ul>
-            <ul className="navbar-nav mb-2 mb-lg-0">
+                      <ul className="navbar-nav mb-2 mb-lg-0 mx-2">
               <li className="nav-item borderline">
                 <NavLink className="nav-link" to="/log-in">
                   Log in
                 </NavLink>
               </li>
             </ul>
-            <button type="button" className="btn btn-light ms-lg-2">
+                <button type="button" className="btn btn-light ms-lg-2 mx-2">
               <NavLink className="nav-link text-dark" to="/sign-up">
                 Sign up
               </NavLink>

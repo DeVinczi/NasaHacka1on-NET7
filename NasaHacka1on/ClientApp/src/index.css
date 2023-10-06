@@ -15,11 +15,10 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  min-height: 100vh;
 }
 
 main {
-  flex-grow: 1;
+    min-height:80vh;
 }
 
 h1,
@@ -32,7 +31,6 @@ h6 {
 }
 
 footer {
-    flex-shrink: 0;
 }
 
 .btn-submit-project {
@@ -444,4 +442,10 @@ a,
   to {
     opacity: 1;
   }
+}
+@media (max-width:970px){
+    .borderline {
+        border-right: none;
+        border-top: solid 1px gray;
+    }
 }
