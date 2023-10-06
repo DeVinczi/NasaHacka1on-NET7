@@ -5,7 +5,9 @@ using Gybs.Logic.Validation;
 using Microsoft.EntityFrameworkCore;
 using NasaHacka1on.Database;
 using NasaHacka1on.Infrastracture.Authentication;
+using NasaHacka1on.Mail;
 using NasaHacka1on.Models.Extensions;
+using NasaHacka1on.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,7 +29,7 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddTransient<IClaimsIdentityFactory, ClaimsIdentityFactory>();
 builder.Services.AddTransient<IUserIdentityValidator, UserIdentityValidator>();
-
+builder.Services.AddTransient<IMailService, MailService>();
 builder.Services.AddGybs(builder =>
 {
     builder.AddOperationInitializersForFactory();
@@ -39,11 +41,35 @@ builder.Services.AddGybs(builder =>
 
 new NasaHacka1on.ModuleBootstrapper().Initialize(builder.Services);
 
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "Example API",
+        Version = "v1",
+        Description = "An example of an ASP.NET Core Web API",
+        Contact = new Microsoft.OpenApi.Models.OpenApiContact
+        {
+            Name = "Example Contact",
+            Email = "example@example.pl",
+            Url = new Uri("https://example.com/contact")
+        }
+    });
+});
+
+builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+    });
 }
 else
 {
@@ -51,7 +77,6 @@ else
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
 
 app.UseHttpsRedirection();
 

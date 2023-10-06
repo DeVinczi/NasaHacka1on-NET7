@@ -8,6 +8,8 @@ using NasaHacka1on.BusinessLogic.Providers;
 using NasaHacka1on.Cqrs;
 using NasaHacka1on.Database;
 using NasaHacka1on.Database.Models;
+using NasaHacka1on.Extensions;
+using NasaHacka1on.Mail;
 using NasaHacka1on.Models.Models;
 
 namespace NasaHacka1on.BusinessLogic.Commands.Account;
@@ -26,6 +28,7 @@ internal class SignUpUserCommandHandler : ICommandHandler<SignUpUserCommand>
     private readonly IUserManager _userManager;
     private readonly IValidator _validator;
     private readonly CommunityCodeHubDataContext _dataContext;
+    private readonly Services.IMailService _mailService;
 
     public SignUpUserCommandHandler(
         IConfiguration configuration,
@@ -33,7 +36,8 @@ internal class SignUpUserCommandHandler : ICommandHandler<SignUpUserCommand>
         ILogger<SignUpUserCommandHandler> logger,
         IUserManager userManager,
         IValidator validator,
-        CommunityCodeHubDataContext dataContext)
+        CommunityCodeHubDataContext dataContext,
+        Services.IMailService mailService)
     {
         _configuration = configuration;
         _dataContext = dataContext;
@@ -41,6 +45,7 @@ internal class SignUpUserCommandHandler : ICommandHandler<SignUpUserCommand>
         _logger = logger;
         _userManager = userManager;
         _validator = validator;
+        _mailService = mailService;
     }
 
     public async Task<Gybs.IResult> HandleAsync(SignUpUserCommand command)
@@ -68,6 +73,21 @@ internal class SignUpUserCommandHandler : ICommandHandler<SignUpUserCommand>
         }
 
         var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+
+        var email = new MailData
+        {
+            EmailToId = "dawid8sly@gmail.com",
+            EmailToName = user.DisplayName,
+            EmailSubject = "Confirm Email",
+            EmailBody = $"{_configuration["EmailRenderer:Settings:ApplicationUrl"]}/account/confirm-email/{user.Id}/{token.ToBase64String()}"
+        };
+
+        var isSent = await _mailService.SendMailAsync(email);
+
+        if (isSent is false)
+        {
+            return Result.Failure(ResultErrorKeys.Conflict, AccountResultErrorMessages.UnknownError);
+        }
 
         await _dataContext.SaveChangesAsync();
 

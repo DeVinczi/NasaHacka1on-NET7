@@ -64,23 +64,23 @@ namespace NasaHacka1on.Web.Account
             return NoContent();
         }
 
-        //    [HttpPost, Route(Route + "forgot-password")]
-        //    public async Task<IActionResult> ForgotPassword(ForgotPasswordWebModel webModel)
-        //    {
-        //        var result = await _operationFactory
-        //            .Create<ForgotPasswordCommand>(c =>
-        //            {
-        //                c.Email = webModel.Email.Trim().ToLower();
-        //            })
-        //            .HandleAsync();
+        [HttpPost, Route(Route + "forgot-password")]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordWebModel webModel)
+        {
+            var result = await _operationFactory
+                .Create<ForgotPasswordCommand>(c =>
+                {
+                    c.Email = webModel.Email.Trim().ToLower();
+                })
+                .HandleAsync();
 
-        //        if (!result.HasSucceeded)
-        //        {
-        //            return BadRequest(result.Errors);
-        //        }
+            if (!result.HasSucceeded)
+            {
+                return BadRequest(result.Errors);
+            }
 
-        //        return Ok();
-        //    }
+            return Ok();
+        }
 
         //    [HttpPost, Route(Route + "reset-password")]
         //    public async Task<IActionResult> ResetPassword(ResetPasswordWebModel webModel)

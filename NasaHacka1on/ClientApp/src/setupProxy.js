@@ -5,7 +5,16 @@ const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_H
   env.ASPNETCORE_URLS ? env.ASPNETCORE_URLS.split(';')[0] : 'http://localhost:26974';
 
 const context = [
-  "/weatherforecast",
+    //POST
+    "/api/account/sign-in", // to jest legit login
+    "/api/account/sign-up",
+    "/api/account/forgot-password",
+
+    //GET
+    "/api/login", // to nie jest login 
+    "/api/login/github",
+    "/api/login/google",
+    "/api/login/facebook",
 ];
 
 const onError = (err, req, resp, target) => {
