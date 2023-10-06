@@ -9,6 +9,8 @@ import NotFound from "./pages/not-found/NotFound";
 import Error from "./pages/Error/Error";
 import Signup from "./pages/auth/Signup";
 import Login from "./pages/auth/Login";
+import FindProject from "./pages/find-project/FindProject";
+import AddProject from "./pages/add-project/AddProject";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +45,16 @@ const router = createBrowserRouter([
       {
         path: "/log-in",
         element: <Login />,
+        errorElement: <Error />,
+      },
+      {
+        path: "/find-project",
+        element: <FindProject />,
+        errorElement: <Error />,
+      },
+      {
+        path: "/add-project",
+        element: <AddProject />,
         errorElement: <Error />,
       },
     ],
