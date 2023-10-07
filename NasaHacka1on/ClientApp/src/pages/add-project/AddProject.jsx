@@ -1,20 +1,31 @@
 import { useNavigate } from "react-router-dom";
 import useInput from "../../hooks/use-input";
-import { isEmail, isNotEmpty } from "../../utils/validators";
-import authService from "../../services/auth.service";
+import { isNotEmpty } from "../../utils/validators";
+import Select from "react-select";
+import { useState } from "react";
 
 const AddProject = () => {
   const navigate = useNavigate();
 
-  //email input
+  //project name input
   const {
-    value: email,
-    isValid: isEmailValid,
-    hasError: hasEmailError,
-    handleValueChange: handleEmailChange,
-    handleInputBlur: handleEmailBlur,
-    reset: resetEmailInput,
-  } = useInput(isEmail);
+    value: projectName,
+    isValid: isProjectNameValid,
+    hasError: hasProjectNameError,
+    handleValueChange: handleProjectNameChange,
+    handleInputBlur: handleProjectNameBlur,
+    reset: resetProjectNameInput,
+  } = useInput(isNotEmpty);
+
+  //description input
+  const {
+    value: description,
+    isValid: isDescriptionValid,
+    hasError: hasDescriptionError,
+    handleValueChange: handleDescriptionChange,
+    handleInputBlur: handleDescriptionBlur,
+    reset: resetDescriptionInput,
+  } = useInput(isNotEmpty);
 
   //password input
   const {
@@ -29,7 +40,7 @@ const AddProject = () => {
   //form validation
   let isFormValid = false;
 
-  if (isEmailValid && isPasswordValid) {
+  if (isProjectNameValid && isDescriptionValid && isPasswordValid) {
     isFormValid = true;
   }
 
@@ -39,22 +50,23 @@ const AddProject = () => {
     navigate("/sign-up");
   };
 
-  const handleLogin = (event) => {
+  const handleAddProject = (event) => {
     event.preventDefault();
     if (!isFormValid) {
       return;
     }
+    //project model to send to BE
+    const project = { projectName, password };
+    //action to create projecy
+    //.....
 
-    const user = { email, password };
-    const response = authService.login(user);
-    console.log("login comp onent: ", response);
-
-    resetEmailInput();
+    resetProjectNameInput();
+    resetDescriptionInput();
     resetPasswordInput();
     // navigate("/projects");
   };
 
-  const projectNameInputClasses = hasEmailError
+  const projectNameInputClasses = hasProjectNameError
     ? "form-control invalid"
     : "form-control";
 
@@ -62,52 +74,130 @@ const AddProject = () => {
     ? "form-control invalid"
     : "form-control";
 
-  const descriptionInputClasses = hasPasswordError
+  const descriptionInputClasses = hasDescriptionError
     ? "form-control invalid"
     : "form-control";
 
   const techOptions = [
-    "Angular",
-    "Bash",
-    "C / C++",
-    "C#",
-    "CouchDB",
-    "Dart",
-    "Gatsby",
-    "Go",
-    "GraphQL",
-    "Haskel",
-    "HTML / CSS",
-    "Java",
-    "JavaScript",
-    "JQuery",
-    "Lua",
-    "MarkDown",
-    "MongoDB",
-    "MySQL",
-    "NextJS",
-    "NodeJS",
-    "PHP",
-    "PostgreSQL",
-    "Python",
-    "React",
-    "Ruby",
-    "Rust",
-    "Shell",
-    "SQLite",
-    "Svelte",
-    "TypeScript",
-    "VueJS",
+    { value: "Angular", label: "Angular" },
+    { value: "Bash", label: "Bash" },
+    { value: "C / C++", label: "C / C++" },
+    { value: "C#", label: "C#" },
+    { value: "CouchDB", label: "CouchDB" },
+    { value: "Dart", label: "Dart" },
+    { value: "Gatsby", label: "Gatsby" },
+    { value: "Go", label: "Go" },
+    { value: "GraphQL", label: "GraphQL" },
+    { value: "Haskel", label: "Haskel" },
+    { value: "HTML / CSS", label: "HTML / CSS" },
+    { value: "Java", label: "Java" },
+    { value: "JavaScript", label: "JavaScript" },
+    { value: "JQuery", label: "JQuery" },
+    { value: "Lua", label: "Lua" },
+    { value: "MarkDown", label: "MarkDown" },
+    { value: "MongoDB", label: "MongoDB" },
+    { value: "MySQL", label: "MySQL" },
+    { value: "NextJS", label: "NextJS" },
+    { value: "NodeJS", label: "NodeJS" },
+    { value: "PHP", label: "PHP" },
+    { value: "PostgreSQL", label: "PostgreSQL" },
+    { value: "Python", label: "Python" },
+    { value: "React", label: "React" },
+    { value: "Ruby", label: "Ruby" },
+    { value: "Rust", label: "Rust" },
+    { value: "Shell", label: "Shell" },
+    { value: "SQLite", label: "SQLite" },
+    { value: "Svelte", label: "Svelte" },
+    { value: "TypeScript", label: "TypeScript" },
+    { value: "GraphQL", label: "GraphQL" },
   ];
 
-  const handleTechOptions = (event) => {
-    console.log(event.target.value);
+  const [chosenTechOptions, setChosenTechOptions] = useState(null);
+
+  const handleTechOptions = (selectedOptions) => {
+    setChosenTechOptions(selectedOptions.map((option) => option.value));
+  };
+
+  const contributorOptions = [
+    { value: "Backend Developers", label: "Backend Developers" },
+    { value: "Code Reviewers", label: "Code Reviewers" },
+    { value: "Designers", label: "Designers" },
+    { value: "Developers", label: "Developers" },
+    { value: "DevOps", label: "DevOps" },
+    { value: "Frontend Developers", label: "Frontend Developers" },
+    { value: "Issue Triage", label: "Issue Triage" },
+    { value: "Maintainers", label: "Maintainers" },
+    { value: "Mentors", label: "Mentors" },
+    { value: "Project Owners", label: "Project Owners" },
+    { value: "Researchers", label: "Researchers" },
+    { value: "Technical Writers", label: "Technical Writers" },
+    { value: "Testers", label: "Testers" },
+    { value: "UX", label: "UX" },
+  ];
+
+  const [chosenContributorOptions, setChosenContributorOptions] =
+    useState(null);
+
+  const handleContributorOptions = (selectedOptions) => {
+    setChosenContributorOptions(selectedOptions.map((option) => option.value));
+  };
+
+  const subjectsOptions = [
+    { value: "Accessibility", label: "Accessibility" },
+    { value: "Android", label: "Android" },
+    { value: "Automation", label: "Automation" },
+    { value: "Browser Extension", label: "Browser Extension" },
+    { value: "CLI", label: "CLI" },
+    { value: "Code Framework", label: "Code Framework" },
+    { value: "Cryptography", label: "Cryptography" },
+    { value: "Data Visualization", label: "Data Visualization" },
+    { value: "DevOps", label: "DevOps" },
+    { value: "E-Commerce", label: "E-Commerce" },
+    { value: "Education", label: "Education" },
+    { value: "Embedded Systems", label: "Embedded Systems" },
+    { value: "Environment", label: "Environment" },
+    { value: "Finance", label: "Finance" },
+    { value: "First Timer Friendly", label: "First Timer Friendly" },
+    { value: "Gaming", label: "Gaming" },
+    { value: "Git", label: "Git" },
+    { value: "Health", label: "Health" },
+    { value: "Infosec", label: "Infosec" },
+    { value: "iOS", label: "iOS" },
+    { value: "Machine learning", label: "Machine learning" },
+    { value: "Media", label: "Media" },
+    { value: "Productivity", label: "Productivity" },
+    { value: "Raspberry Pi", label: "Raspberry Pi" },
+    { value: "Scraping", label: "Scraping" },
+    { value: "Social", label: "Social" },
+    { value: "Social Activism", label: "Social Activism" },
+    { value: "Starter Template", label: "Starter Template" },
+    { value: "Tools", label: "Tools" },
+    { value: "Web Application", label: "Web Application" },
+  ];
+
+  const [chosenSubjectOptions, setChosenSubjectOptions] = useState(null);
+
+  const handleSubjectOptions = (selectedOptions) => {
+    console.log(selectedOptions);
+    setChosenSubjectOptions(selectedOptions.map((option) => option.value));
+  };
+
+  const [overviewText, setOverviewText] = useState("");
+
+  const handleOverviewChange = (event) => {
+    setOverviewText(event.target.value);
+  };
+
+  const [contributingText, setContributingText] = useState("");
+
+  const handleContributingChange = (event) => {
+    setContributingText(event.target.value);
   };
 
   return (
     <form
       className="container-sm mx-auto my-3 d-flex flex-column justify-content-center align-items-center"
-      onSubmit={handleLogin}
+      onSubmit={handleAddProject}
     >
       <p className="mb-2 fs-5 col-12 col-md-10 col-lg-8 fw-bold">
         List your project
@@ -120,11 +210,11 @@ const AddProject = () => {
           type="text"
           className={projectNameInputClasses}
           id="projectName"
-          value={email}
-          onChange={handleEmailChange}
-          onBlur={handleEmailBlur}
+          value={projectName}
+          onChange={handleProjectNameChange}
+          onBlur={handleProjectNameBlur}
         />
-        {hasEmailError && (
+        {hasProjectNameError && (
           <p className="text-danger mt-1">Please enter project name.</p>
         )}
       </div>
@@ -158,14 +248,15 @@ const AddProject = () => {
           type="text"
           className={descriptionInputClasses}
           id="description"
-          value={password}
-          onChange={handlePasswordChange}
-          onBlur={handlePasswordBlur}
+          value={description}
+          onChange={handleDescriptionChange}
+          onBlur={handleDescriptionBlur}
         />
-        {hasPasswordError && (
-          <p className="text-danger mt-1">Please provide a valid password.</p>
+        {hasDescriptionError && (
+          <p className="text-danger mt-1">Please provide a description.</p>
         )}
       </div>
+
       <div className="mb-2 col-12 col-md-10 col-lg-8">
         <label htmlFor="description" className="form-label">
           <i className="bi bi-link-45deg ps-2 me-2"></i>Website URL
@@ -206,42 +297,42 @@ const AddProject = () => {
             <label htmlFor="techFocusSelect" className="form-label">
               Tech Focus
             </label>
-            <select
-              className="form-select"
+            <Select
               id="techFocusSelect"
-              multiple="multiple"
+              options={techOptions}
+              isMulti
+              placeholder="What technologies does your project cover?"
+              hideSelectedOptions
               onChange={handleTechOptions}
-            >
-              {/* <option value={"none"}>
-                What technologies does your project cover?
-              </option> */}
-              {techOptions.map((option, index) => {
-                return (
-                  <option key={index} value={option}>
-                    {option}
-                  </option>
-                );
-              })}
-              <option value>What technologies does your project cover?</option>
-            </select>
+            />
           </div>
+
           <div className="mb-2">
-            <label htmlFor="contributorRoleSelect" className="form-label">
+            <label htmlFor="contributorSelect" className="form-label">
               Contributor roles
             </label>
-            <select className="form-select" id="contributorRoleSelect">
-              <option selected>
-                What kind of contributors are you looking for?
-              </option>
-            </select>
+            <Select
+              id="contributorSelect"
+              options={contributorOptions}
+              isMulti
+              placeholder="What kind of contributors are you looking for?"
+              hideSelectedOptions
+              onChange={handleContributorOptions}
+            />
           </div>
+
           <div className="mb-2">
             <label htmlFor="subjectSelect" className="form-label">
               Subjects
             </label>
-            <select className="form-select" id="subjectSelect">
-              <option>What is your project about?</option>
-            </select>
+            <Select
+              id="subjectSelect"
+              options={subjectsOptions}
+              isMulti
+              placeholder="What is your project about?"
+              hideSelectedOptions
+              onChange={handleSubjectOptions}
+            />
           </div>
         </div>
 
@@ -320,6 +411,7 @@ const AddProject = () => {
           id="overviewTextArea"
           placeholder="What is your project about? What does it do?"
           rows="3"
+          onChange={handleOverviewChange}
         ></textarea>
       </div>
 
@@ -332,6 +424,7 @@ const AddProject = () => {
           id="contributingTextArea"
           placeholder="How can potencial contributors onboard effeciently?"
           rows="3"
+          onChange={handleContributingChange}
         ></textarea>
       </div>
 
