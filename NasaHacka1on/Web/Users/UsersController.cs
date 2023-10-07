@@ -40,14 +40,13 @@ public class UsersLoginController : CommunityCodeHubController
 
     [AllowAnonymous]
     [HttpGet, Route(Github)]
-    public async Task<IResult> GithubLogin()
+    public ActionResult GithubLogin()
     {
-        return Results.Challenge(
+        return Challenge(
             new AuthenticationProperties
             {
-                RedirectUri = "https://localhost:7120"
-            },
-            authenticationSchemes: new List<string>() { OAuthProviders.Github });
+                RedirectUri = "https://localhost:44418"
+            }, OAuthProviders.Github);
     }
 
     [AllowAnonymous]

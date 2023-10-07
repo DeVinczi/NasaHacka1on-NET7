@@ -32,7 +32,8 @@ module.exports = function (app) {
     // Uncomment this line to add support for proxying websockets
     //ws: true, 
     headers: {
-      Connection: 'Keep-Alive'
+        Connection: 'Keep-Alive',
+        origin: '*'
     }
   });
 

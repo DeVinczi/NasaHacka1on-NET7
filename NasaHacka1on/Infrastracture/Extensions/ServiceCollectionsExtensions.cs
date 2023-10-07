@@ -140,8 +140,6 @@ internal static class ServiceCollectionsExtensions
                         using var result = await ctx.Backchannel.SendAsync(request);
                         var user = await result.Content.ReadFromJsonAsync<JsonElement>();
                         ctx.RunClaimActions(user);
-
-
                     }
                 };
             })

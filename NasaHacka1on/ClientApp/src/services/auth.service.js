@@ -1,42 +1,43 @@
+interface CustomError {
+    key: number;
+    messages: string[];
+}
+
 class AuthService {
-  #url = "/api/account/";
+    #url = "/api/account/";
 
-  async createAccount(user) {
-    const url = this.#url + "sign-up";
+    async createAccount(user) {
+        const url = this.#url + "sign-up";
 
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    });
-    console.log(response);
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(user),
+        });
 
-    const responseData = await response.json();
-    console.log(responseData);
+        const responseData = await response.json();
 
-    return responseData;
-  }
 
-  async login(user) {
-    const url = this.#url + "sign-in";
+        return responseData;
+    }
+    
+    async login(user) {
+        const url = this.#url + "sign-in";
 
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    });
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(user),
+        });
 
-    console.log(response);
+        const responseData = await response.json();
 
-    const responseData = await response.json();
-    console.log(responseData);
-
-    return responseData;
-  }
+        return responseData;
+    }
 }
 
 const authService = new AuthService();

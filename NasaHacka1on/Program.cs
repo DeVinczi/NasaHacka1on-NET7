@@ -83,7 +83,7 @@ app.UseHttpsRedirection();
 app.UseRouting();
 
 app.UseStaticFiles();
-app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:44418"));
+app.UseCors(x => x.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod().AllowCredentials().WithOrigins("https://localhost:44418", "https://github.com"));
 app.UseAuthentication();
 
 app.UseAuthorization();
