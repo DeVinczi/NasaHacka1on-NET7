@@ -3,6 +3,7 @@ import useInput from "../../hooks/use-input";
 import { isNotEmpty } from "../../utils/validators";
 import Select from "react-select";
 import { useState } from "react";
+import './addproject.css'
 
 const AddProject = () => {
   const navigate = useNavigate();
@@ -194,15 +195,18 @@ const AddProject = () => {
     setContributingText(event.target.value);
   };
 
-  return (
+    return (
+        <div>
+            <div className="project-container mx-auto mt-3 py-3 px-1 border border-1 shadow">
     <form
-      className="container-sm mx-auto my-3 d-flex flex-column justify-content-center align-items-center"
+      className="container-sm mx-auto my-1 d-flex flex-column justify-content-center align-items-center"
       onSubmit={handleAddProject}
-    >
-      <p className="mb-2 fs-5 col-12 col-md-10 col-lg-8 fw-bold">
-        List your project
+                ><p className="mb-2 h1 fs-4 col-12 col-md-10 fw-bold ps-1">Post your project</p>
+                    <p className="mb-2 fs-6 col-12 col-md-10 pb-3 border-bottom ps-1">Fill form below to place your project on global board.</p>
+                    <p className="mb-2 mt-2 fs-5 col-12 col-md-10 fw-bold ps-1">
+        Common information
       </p>
-      <div className="mt-3 mb-2 col-12 col-md-10 col-lg-8">
+      <div className="mb-2 col-12 col-md-10">
         <label htmlFor="projectName" className="form-label ps-1">
           Project name
         </label>
@@ -219,11 +223,11 @@ const AddProject = () => {
         )}
       </div>
 
-      <div className="mb-2 mb-3 col-12 col-md-10 col-lg-8">
+      <div className="mb-2 col-12 col-md-10">
         <label htmlFor="githubRepo" className="form-label">
           <i
-            className="socialicons bi bi-github me-2"
-            style={{ fontSize: "1.2em", color: "#000" }}
+            className="socialicons bi bi-github ps-1 me-2"
+            style={{ fontSize: "1.1em", color: "#000" }}
           ></i>
           GitHub repository
         </label>
@@ -240,8 +244,8 @@ const AddProject = () => {
         )}
       </div>
 
-      <div className="mb-2 col-12 col-md-10 col-lg-8">
-        <label htmlFor="description" className="form-label ps-2">
+      <div className="mb-2 col-12 col-md-10">
+        <label htmlFor="description" className="form-label ps-1">
           Description
         </label>
         <input
@@ -257,9 +261,9 @@ const AddProject = () => {
         )}
       </div>
 
-      <div className="mb-2 col-12 col-md-10 col-lg-8">
+      <div className="mb-2 col-12 col-md-10">
         <label htmlFor="description" className="form-label">
-          <i className="bi bi-link-45deg ps-2 me-2"></i>Website URL
+          <i className="bi bi-link-45deg ps-1 me-1"></i>Website URL
         </label>
         <input
           type="text"
@@ -273,9 +277,9 @@ const AddProject = () => {
           <p className="text-danger mt-1">Please provide a valid password.</p>
         )}
       </div>
-      <div className="mb-2 col-12 col-md-10 col-lg-8">
+      <div className="mb-2 col-12 col-md-10">
         <label htmlFor="description" className="form-label">
-          <i className="bi bi-twitter ps-2 me-2"></i>Twitter URL
+          <i className="bi bi-linkedin ps-1 me-2"></i>Linkedin URL
         </label>
         <input
           type="text"
@@ -290,8 +294,8 @@ const AddProject = () => {
         )}
       </div>
 
-      <div className="mb-2 col-12 col-md-10 col-lg-8 row gx-1">
-        <div className="col-12 col-xl-8">
+      <div className="mb-2 col-12 col-md-10 row gx-1 mt-4">
+        <div className="col-12 col-xl-10">
           <p className="mb-2 fs-5 fw-bold">Project tags</p>
           <div className="mb-2">
             <label htmlFor="techFocusSelect" className="form-label">
@@ -321,7 +325,7 @@ const AddProject = () => {
             />
           </div>
 
-          <div className="mb-2">
+          <div className="mb-3">
             <label htmlFor="subjectSelect" className="form-label">
               Subjects
             </label>
@@ -336,11 +340,11 @@ const AddProject = () => {
           </div>
         </div>
 
-        <div className="col-12 col-xl-4">
+        <div className="col-12 col-xl-8 mt-4">
           <p className="mb-2 fs-5 fw-bold">Contributing overview</p>
           <div className="mb-2">
             <label htmlFor="description" className="form-label">
-              Automated dev environment
+              Development Environment
             </label>
             <input
               type="text"
@@ -400,9 +404,9 @@ const AddProject = () => {
         </div>
       </div>
 
-      <p className="mb-3 fs-5 col-12 col-md-10 col-lg-8 fw-bold">Content</p>
+      <p className="mt-3 mb-2 fs-5 col-12 col-md-10 fw-bold">Content</p>
 
-      <div className="mb-3 col-12 col-md-10 col-lg-8">
+      <div className="mb-3 col-12 col-md-10">
         <label htmlFor="overviewTextArea" className="form-label ps-2">
           Overview
         </label>
@@ -415,7 +419,7 @@ const AddProject = () => {
         ></textarea>
       </div>
 
-      <div className="mb-3 col-12 col-md-10 col-lg-8">
+      <div className="mb-3 col-12 col-md-10">
         <label htmlFor="contributingTextArea" className="form-label ps-2">
           Contributing
         </label>
@@ -435,7 +439,9 @@ const AddProject = () => {
       >
         Create project
       </button>
-    </form>
+            </form>
+            </div>
+        </div>
   );
 };
 

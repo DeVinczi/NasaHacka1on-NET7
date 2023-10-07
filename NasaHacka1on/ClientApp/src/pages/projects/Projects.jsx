@@ -3,27 +3,26 @@ import './projects.css'
 const Projects = () => {
     return <div>
     <div class="media-class">
-        <div class="featBitCard container-xxl mt-3">
+            <div class="featBitCard container-xxl mt-3">
+        <a href="/">
             <div class="flex-grow">
                 <div class="flex-gap-4 items-center">
                     <h3 class="font-semibold text-light-type flex items-center gap-2">
-                        <a class="supports-hover:hover:text-light-interactive" href="/">FeatBit</a>
+                            <a class="bi bi-link supports-hover:hover:text-light-interactive" href="/">FeatBit</a>
                     </h3>
                     </div>
                     <div class="d-flex">
                         <h6>Status: <span class="status-recruiting-rejected">Closed</span></h6>
-                    </div>
-
-                    
+                    </div> 
                 <p class="text-sm text-light-type mt-2 overflow-hidden">FeatBit is a scalable, fast and 100% open-source feature flag management tool</p>
                 <div class="mt-4">
                     <h2 class="text-xs font-semibold text-light-interactive mb-2">Last 30 days:</h2>
                     <div class="flex text-black-500">
                         <div class="text-xs text-light-type-medium">
-                                <span class="font-semibold">6</span><span class="ml-1 uppercase"> contributors</span>
+                                    <span class="bi bi-person font-semibold"> 6</span><span class="ml-1 uppercase"> contributors</span>
                         </div>
                         <div class="mt-1 text-xs text-light-type-medium">
-                            <span class="font-semibold">10 </span><span class="ml-1 uppercase">Pull Request opened</span>
+                                    <span class="bi bi-git font-semibold"> 10 </span><span class="ml-1 uppercase">Pull Request opened</span>
                             </div>
                     </div>
                 </div>
@@ -47,13 +46,15 @@ const Projects = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+                    </div>
+                </a>
         </div>
-        <div class="featBitCard container-xxl mt-3">
+            <div class="featBitCard container-xxl mt-3">
+                <a href="/">
             <div class="flex-grow">
                 <div class="flex-gap-4 items-center">
                     <h3 class="font-semibold text-light-type text-xl flex items-center gap-2">
-                            <a class="supports-hover:hover:text-light-interactive" href="/">Cryostat</a>
+                            <a class="bi bi-link supports-hover:hover:text-light-interactive" href="/">Cryostat</a>
                     </h3>
                     </div>
                     <div class="d-flex">
@@ -64,10 +65,10 @@ const Projects = () => {
                         <h2 class="text-xs font-semibold text-light-interactive mb-2">Last 30 days:</h2>
                         <div class="flex text-black-500">
                             <div class="text-xs text-light-type-medium">
-                                <span class="font-semibold">2</span><span class="ml-1 uppercase"> contributors</span>
+                                    <span class="bi bi-person font-semibold"> 2</span><span class="ml-1 uppercase"> contributors</span>
                             </div>
                             <div class="mt-1 text-xs text-light-type-medium">
-                                <span class="font-semibold">3 </span><span class="ml-1 uppercase">Pull Request opened</span>
+                                    <span class="bi bi-git font-semibold"> 3 </span><span class="ml-1 uppercase">Pull Request opened</span>
                             </div>
                         </div>
                 </div>
@@ -91,27 +92,29 @@ const Projects = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+                    </div>
+            </a>
         </div>
-        <div class="featBitCard container-xxl mt-3">
+            <div class="featBitCard container-xxl mt-3">
+                <a href="/">
             <div class="flex-grow">
                 <div class="flex-gap-4 items-center">
                     <h3 class="font-semibold text-light-type text-xl flex items-center gap-2">
-                            <a class="supports-hover:hover:text-light-interactive" href="/">Vue Stripe</a>
+                            <a class="bi bi-link supports-hover:hover:text-light-interactive" href="/">Vue Stripe</a>
                     </h3>
                     </div>
                     <div class="d-flex">
-                        <h6>Status: <span class="status-recruiting-waiting">Waiting</span></h6>
+                        <h6>Status: <span class="status-recruiting-waiting ">Waiting</span></h6>
                     </div>
                     <p class="text-sm text-light-type mt-2 overflow-hidden">Stripe Checkout & Elements for Vue.js</p>
                 <div class="mt-4">
                         <h2 class="text-xs font-semibold text-light-interactive mb-2">Last 30 days:</h2>
                         <div class="flex text-black-500">
                             <div class="text-xs text-light-type-medium">
-                                <span class="font-semibold">1</span><span class="ml-1 uppercase"> contributor</span>
+                                    <span class="bi bi-person font-semibold"> 1</span><span class="ml-1 uppercase"> contributor</span>
                             </div>
                             <div class="mt-1 text-xs text-light-type-medium">
-                                <span class="font-semibold">0 </span><span class="ml-1 uppercase">Pull Request opened</span>
+                                    <span class="bi bi-git font-semibold"> 0 </span><span class="ml-1 uppercase">Pull Request opened</span>
                             </div>
                         </div>
                 </div>
@@ -132,7 +135,8 @@ const Projects = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+                    </div>
+            </a>
             </div>
         </div>
         </div>;

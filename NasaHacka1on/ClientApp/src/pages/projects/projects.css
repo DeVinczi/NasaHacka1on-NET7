@@ -128,30 +128,37 @@
 .media-class{
 }
 .status-recruiting {
-    background-color: green;
-    color: white;
-    padding: 0.25em 0.5em;
+    color: green;
     border-radius: 0.25em;
+    font-weight: bold;
 }
 
 .status-recruiting-rejected {
-    background-color: darkred;
-    color: white;
-    padding: 0.25em 0.5em;
+    color: darkred;
     border-radius: 0.25em;
+    font-weight:bold;
 }
 
 .status-recruiting-waiting {
-    background-color: darkorange;
-    color: white;
-    padding: 0.25em 0.5em;
+    color: darkorange;
     border-radius: 0.25em;
+    font-weight: bold;
 }
 
+.hover-title:hover {
+    color: #FFC30B !important;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+.middle{
+    vertical-align: middle;
+}
 @media (max-width: 1600px) {
     .featBitCard {
+        transition: 0s color;
         max-width:80%; /* Adjust the maximum width for smaller screens */ /* Remove right margin to stack cards */
-    }
+        font-size-adjust:0.55;
+        }
 }
 @media (max-width: 767px) {
     .featBitCard {

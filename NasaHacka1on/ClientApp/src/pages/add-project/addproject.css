@@ -1,0 +1,46 @@
+﻿.project-container {
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+@media (max-width: 576px) {
+    .project-container {
+        width: 90%;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .project-container {
+        width: 80%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    .project-container {
+        width: 65%;
+    }
+}
+
+@media (min-width: 993px) and (max-width: 1199px) {
+    .project-container {
+        width: 60%;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1499px) {
+    .project-container {
+        width: 60%;
+    }
+}
+
+@media (min-width: 1500px) and (max-width: 1799px) {
+    .project-container {
+        width: 60%;
+    }
+}
+
+@media (min-width: 1800px) {
+    .project-container {
+        width: 50%;
+    }
+}
