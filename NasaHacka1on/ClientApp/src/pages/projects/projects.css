@@ -1,0 +1,161 @@
+﻿.projects {
+    line-clamp:3;-webkit-line-clamp:3;-webkit-box-orient:vertical;display:-webkit-box;height:60px;max-height:60px;line-height:20px;
+}
+
+.featBitCard {
+    padding: 1rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 0.5rem;
+    border: 1px solid lightgray;
+    max-width: 400px;
+}
+
+    .featBitCard .flex-grow {
+        flex-grow: 1;
+    }
+
+    .featBitCard .flex-gap-4 {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    .featBitCard h3 {
+        font-weight: bold;
+        font-size: 1.25rem;
+        color: #333333; /* Adjust as needed */
+    }
+
+    .featBitCard a {
+        color: #333333; /* Adjust as needed */
+        text-decoration: none;
+    }
+
+    .featBitCard p {
+        font-size: 0.875rem;
+        color: #333333; /* Adjust as needed */
+        margin-top: 0.5rem;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        max-height: 60px;
+        line-height: 20px;
+    }
+
+    .featBitCard .mt-4 {
+        margin-top: 1rem;
+    }
+
+    .featBitCard h2 {
+        font-size: 0.75rem;
+        font-weight: bold;
+        color: #333333; /* Adjust as needed */
+        margin-bottom: 0.5rem;
+    }
+
+    .featBitCard .justify-between {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .featBitCard .text-xs {
+        font-size: 0.625rem;
+        color: #333333; /* Adjust as needed */
+    }
+
+    .featBitCard .text-light-type-medium {
+        font-weight: bold;
+    }
+
+    .featBitCard .uppercase {
+        text-transform: uppercase;
+    }
+
+    .featBitCard .border-light-type-disabled {
+        border-color: lightgray;
+    }
+
+        .featBitCard .border-light-type-disabled hr {
+            border-top: 1px solid lightgray;
+        }
+
+    .featBitCard .uppercase {
+        text-transform: uppercase;
+    }
+
+    .featBitCard .text-light-type-medium {
+        font-weight: bold;
+    }
+
+    .featBitCard .text-light-interactive {
+        color: #007BFF; /* Adjust as needed */
+    }
+
+    .featBitCard .inline-flex {
+        display: inline-flex;
+    }
+
+    .featBitCard .rounded-full {
+        border-radius: 9999px;
+    }
+
+    .featBitCard .px-2 {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .featBitCard .py-0.5 {
+        padding-top: 0.125rem;
+        padding-bottom: 0.125rem;
+    }
+
+    .featBitCard .mr-2 {
+        margin-right: 0.5rem;
+    }
+
+    .featBitCard .mb-2 {
+        margin-bottom: 0.5rem;
+    }
+
+    .featBitCard .whitespace-nowrap {
+        white-space: nowrap;
+    }
+
+.media-class{
+}
+.status-recruiting {
+    background-color: green;
+    color: white;
+    padding: 0.25em 0.5em;
+    border-radius: 0.25em;
+}
+
+.status-recruiting-rejected {
+    background-color: darkred;
+    color: white;
+    padding: 0.25em 0.5em;
+    border-radius: 0.25em;
+}
+
+.status-recruiting-waiting {
+    background-color: darkorange;
+    color: white;
+    padding: 0.25em 0.5em;
+    border-radius: 0.25em;
+}
+
+@media (max-width: 1600px) {
+    .featBitCard {
+        max-width:80%; /* Adjust the maximum width for smaller screens */ /* Remove right margin to stack cards */
+    }
+}
+@media (max-width: 767px) {
+    .featBitCard {
+        max-width: 100%; /* Adjust the maximum width for smaller screens */
+        margin-right: 0; /* Remove right margin to stack cards */
+    }
+}

@@ -91,6 +91,5 @@ app.UseAuthorization();
 app.UseCommunityCodeHubEndpoints();
 
 //Production
-//app.UseSpa(spa => spa.Options.DefaultPage = "/index.html");
 
 app.Run();

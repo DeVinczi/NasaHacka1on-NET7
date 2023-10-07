@@ -202,8 +202,8 @@ const AddProject = () => {
       <p className="mb-2 fs-5 col-12 col-md-10 col-lg-8 fw-bold">
         List your project
       </p>
-      <div className="mb-2 col-12 col-md-10 col-lg-8">
-        <label htmlFor="projectName" className="form-label ps-2">
+      <div className="mt-3 mb-2 col-12 col-md-10 col-lg-8">
+        <label htmlFor="projectName" className="form-label ps-1">
           Project name
         </label>
         <input

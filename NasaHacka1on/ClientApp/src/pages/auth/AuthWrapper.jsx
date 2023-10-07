@@ -1,5 +1,3 @@
-// import { ToastContainer, toast } from 'react-toastify';
-
 const AuthWrapper = ({ children }) => {
   return (
     <div className="auth-container mx-auto mt-3 py-3 px-1 border border-1 shadow">
@@ -44,7 +42,6 @@ const AuthWrapper = ({ children }) => {
       </div>
 
       {children}
-      {/* <ToastContainer /> */}
     </div>
   );
 };
