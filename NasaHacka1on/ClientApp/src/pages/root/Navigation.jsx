@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/img/logo.png";
+import '../../index.css'
 
 const Navigation = () => {
   return (
     <header>
-      <nav className="navbar navbar-expand-lg navbar-dark effect7">
+      <nav className="navbar navbar-expand-lg navbar">
         <div className="container-xxl">
           <NavLink className="navbar-brand col-md-5" to="/">
             <img src={logo} height="22" />
@@ -21,7 +22,7 @@ const Navigation = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                  <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item mt-2 mt-lg-0">
                 <NavLink
@@ -61,8 +62,8 @@ const Navigation = () => {
                 </NavLink>
               </li>
             </ul>
-                <button type="button" className="btn btn-light ms-lg-2 mx-2">
-              <NavLink className="nav-link text-dark" to="/sign-up">
+                <button type="button" className="btn btn-light button-color ms-lg-2 mx-2">
+              <NavLink className="nav-link" to="/sign-up">
                 Sign up
               </NavLink>
             </button>

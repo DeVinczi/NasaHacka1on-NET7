@@ -1,8 +1,10 @@
+import './auth.css';
+
 const AuthWrapper = ({ children }) => {
   return (
-    <div className="auth-container mx-auto mt-3 py-3 px-1 border border-1 shadow">
+    <div className="auth-container mx-auto mt-3 py-3 px-1 border border-1 shadow ">
       <div className="d-flex flex-column align-items-center">
-        <button className="btn btn-outline-dark border-2 col-11 col-md-10 col-xxl-7  d-flex align-items-center justify-content-center my-3">
+              <button className="button btn btn-outline-dark border-2 col-11 col-md-10 col-xxl-7  d-flex align-items-center justify-content-center my-3">
           <a
             className="d-flex align-items-center justify-content-center text-decoration-none text-dark"
             href="https://localhost:7120/api/login/facebook"
@@ -11,7 +13,7 @@ const AuthWrapper = ({ children }) => {
             <span className="ms-2">Continue using Facebook account</span>
           </a>
         </button>
-        <button className="btn btn-outline-dark border-2 col-11 col-md-10 col-xxl-7 d-flex align-items-center justify-content-center my-2">
+              <button className="button btn btn-outline-dark border-2 col-11 col-md-10 col-xxl-7 d-flex align-items-center justify-content-center my-2">
           <a
             className="d-flex align-items-center justify-content-center text-decoration-none text-dark"
             href="https://localhost:7120/api/login/github"
@@ -24,7 +26,7 @@ const AuthWrapper = ({ children }) => {
           </a>
         </button>
 
-        <button className="btn btn-outline-dark border-2 col-11 col-md-10 col-xxl-7 d-flex align-items-center justify-content-center my-3">
+              <button className="button btn btn-outline-dark border-2 col-11 col-md-10 col-xxl-7 d-flex align-items-center justify-content-center my-3">
           <a
             className="d-flex align-items-center justify-content-center text-decoration-none text-dark"
             href="https://localhost:7120/api/login/google"

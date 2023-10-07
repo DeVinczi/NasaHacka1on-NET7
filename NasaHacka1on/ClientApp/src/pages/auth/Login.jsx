@@ -113,16 +113,16 @@ const Login = () => {
             <p className='text-danger mt-1'>Please provide a valid password.</p>
           )}
         </div>
-        <div className='fw-bold mb-4' role='button'>
-          Forgot password ?
-        </div>
         <button
           type='submit'
-          className='btn btn-dark btn-submit'
+                  className='button button-border btn btn-dark btn-submit'
           disabled={!isFormValid}
         >
           Log in
-        </button>
+              </button>
+              <div className='mt-3 mb-2 text-secondary' role='button'>
+                  Forgot password?
+              </div>
       </form>
     </AuthWrapper>
   );

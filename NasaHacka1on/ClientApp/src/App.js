@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/contribute",
-        element: <Contribute />,
+        element: <AddProject />,
         errorElement: <Error />,
       },
       {

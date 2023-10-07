@@ -3,7 +3,7 @@ import './projects.css'
 const Projects = () => {
     return <div>
     <div class="media-class">
-            <div class="featBitCard container-xxl mt-3">
+            <div class="featBitCard container-xxl mt-3 shadow p-3 rounded">
         <a href="/">
             <div class="flex-grow">
                 <div class="flex-gap-4 items-center">
@@ -49,7 +49,7 @@ const Projects = () => {
                     </div>
                 </a>
         </div>
-            <div class="featBitCard container-xxl mt-3">
+            <div class="featBitCard container-xxl mt-3 shadow p-3 rounded">
                 <a href="/">
             <div class="flex-grow">
                 <div class="flex-gap-4 items-center">
@@ -95,7 +95,7 @@ const Projects = () => {
                     </div>
             </a>
         </div>
-            <div class="featBitCard container-xxl mt-3">
+            <div class="featBitCard container-xxl mt-3 shadow p-3 rounded">
                 <a href="/">
             <div class="flex-grow">
                 <div class="flex-gap-4 items-center">

@@ -160,7 +160,7 @@ const Signup = () => {
         </div>
         <button
           type='submit'
-          className='btn btn-dark btn-submit'
+                  className='btn btn-dark btn-submit button button-border'
           disabled={!isFormValid}
         >
           Sign up

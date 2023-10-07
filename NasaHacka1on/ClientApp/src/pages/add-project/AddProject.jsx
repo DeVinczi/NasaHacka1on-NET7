@@ -197,17 +197,17 @@ const AddProject = () => {
 
     return (
         <div>
-            <div className="project-container mx-auto mt-3 py-3 px-1 border border-1 shadow">
+            <div className="project-container mx-auto py-2 px-3 mt-5 border border-1 shadow ">
     <form
-      className="container-sm mx-auto my-1 d-flex flex-column justify-content-center align-items-center"
+      className="container-sm mx-auto my-1 mt-4 d-flex flex-column justify-content-center align-items-center"
       onSubmit={handleAddProject}
-                ><p className="mb-2 h1 fs-4 col-12 col-md-10 fw-bold ps-1">Post your project</p>
-                    <p className="mb-2 fs-6 col-12 col-md-10 pb-3 border-bottom ps-1">Fill form below to place your project on global board.</p>
-                    <p className="mb-2 mt-2 fs-5 col-12 col-md-10 fw-bold ps-1">
+                ><p className="mb-2 h1 fs-4 col-12 col-md-10 fw-bold">Post your project</p>
+                    <p className="mb-2 fs-6 col-12 col-md-10 pb-3 border-bottom">Fill form below to place your project on global board.</p>
+                    <p className="mb-2 mt-2 fs-5 col-12 col-md-10 fw-bold">
         Common information
       </p>
       <div className="mb-2 col-12 col-md-10">
-        <label htmlFor="projectName" className="form-label ps-1">
+        <label htmlFor="projectName" className="form-label">
           Project name
         </label>
         <input
@@ -226,7 +226,7 @@ const AddProject = () => {
       <div className="mb-2 col-12 col-md-10">
         <label htmlFor="githubRepo" className="form-label">
           <i
-            className="socialicons bi bi-github ps-1 me-2"
+            className="socialicons bi bi-github ps-0 me-2"
             style={{ fontSize: "1.1em", color: "#000" }}
           ></i>
           GitHub repository
@@ -245,7 +245,7 @@ const AddProject = () => {
       </div>
 
       <div className="mb-2 col-12 col-md-10">
-        <label htmlFor="description" className="form-label ps-1">
+        <label htmlFor="description" className="form-label ps-0">
           Description
         </label>
         <input
@@ -263,7 +263,7 @@ const AddProject = () => {
 
       <div className="mb-2 col-12 col-md-10">
         <label htmlFor="description" className="form-label">
-          <i className="bi bi-link-45deg ps-1 me-1"></i>Website URL
+          <i className="bi bi-link-45deg ps-0 me-1"></i>Website URL
         </label>
         <input
           type="text"
@@ -407,7 +407,7 @@ const AddProject = () => {
       <p className="mt-3 mb-2 fs-5 col-12 col-md-10 fw-bold">Content</p>
 
       <div className="mb-3 col-12 col-md-10">
-        <label htmlFor="overviewTextArea" className="form-label ps-2">
+        <label htmlFor="overviewTextArea" className="form-label">
           Overview
         </label>
         <textarea
@@ -420,7 +420,7 @@ const AddProject = () => {
       </div>
 
       <div className="mb-3 col-12 col-md-10">
-        <label htmlFor="contributingTextArea" className="form-label ps-2">
+        <label htmlFor="contributingTextArea" className="form-label">
           Contributing
         </label>
         <textarea
@@ -434,7 +434,7 @@ const AddProject = () => {
 
       <button
         type="submit"
-        className="btn btn-dark btn-submit-project"
+                        className="btn btn-dark btn-submit-project button button-border"
         disabled={!isFormValid}
       >
         Create project

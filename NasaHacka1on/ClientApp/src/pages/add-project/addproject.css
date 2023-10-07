@@ -2,6 +2,9 @@
     background-color: #fff;
     border-radius: 10px;
 }
+.margin-top-self{
+    margin-top:2.5rem !important;
+}
 
 @media (max-width: 576px) {
     .project-container {
@@ -43,4 +46,14 @@
     .project-container {
         width: 50%;
     }
+}
+
+.button:hover {
+    background-color: #ffb100 !important;
+    transition: 0.4s;
+    opacity: 1;
+}
+
+.button-border:hover {
+    border: 1px #ffb100 solid !important;
 }

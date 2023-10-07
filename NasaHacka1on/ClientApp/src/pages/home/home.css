@@ -1,0 +1,10 @@
+﻿.spelled-word p {
+    display: inline-block;
+    animation: spell-out 0.2s steps(1, end);
+}
+
+@keyframes spell-out {
+    from {
+        width: 0;
+    }
+}
