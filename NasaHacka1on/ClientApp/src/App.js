@@ -11,6 +11,7 @@ import Signup from "./pages/auth/Signup";
 import Login from "./pages/auth/Login";
 import FindProject from "./pages/find-project/FindProject";
 import AddProject from "./pages/add-project/AddProject";
+import SignOut from "./pages/sign-out/sign-out";
 
 const router = createBrowserRouter([
   {
@@ -56,7 +57,12 @@ const router = createBrowserRouter([
         path: "/add-project",
         element: <AddProject />,
         errorElement: <Error />,
-      },
+        },
+        {
+        path: "/signout",
+        element: <SignOut />,
+        errorElement: <Error />,
+        }
     ],
   },
 ]);

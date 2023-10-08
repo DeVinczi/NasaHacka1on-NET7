@@ -3,8 +3,13 @@ import logo from "../../assets/img/logo.png";
 import '../../index.css'
 
 const getCookie = (name) => {
-    const cookies = document.cookie.split(';');
-    for (const cookie of cookies) {
+    const cookies = document.cookie;
+    console.log(cookies);
+    if (cookies == null) {
+        return null;
+    }
+    var cookies2 = cookies.split(';');
+    for (const cookie of cookies2) {
         const [cookieName, cookieValue] = cookie.split('=');
         if (cookieName.trim() === name) {
             return decodeURIComponent(cookieValue);
@@ -16,13 +21,13 @@ const getCookie = (name) => {
 const Navigation = () => {
     const cookieValue = getCookie('CommunityCodeHub');
     let cookieAuth = false;
-    if (cookieValue !== null) {
-        cookieAuth = true;
-    }
-    else {
+    if (!cookieValue) {
         cookieAuth = false;
     }
-    console.log(cookieAuth)
+    else {
+        cookieAuth = true;
+    }
+
     return (
         <header>
             <nav className="navbar navbar-expand-lg navbar">
@@ -75,7 +80,7 @@ const Navigation = () => {
                                 </NavLink>
                             </li>
                         </ul>
-                        <div className={cookieAuth ? "d-none" : ""}>
+                        <div className={cookieAuth ? "d-none" : "d-flex"}>
                             <ul className="navbar-nav mb-2 mb-lg-0 mx-2">
                                 <li className="nav-item borderline">
                                     <NavLink className="nav-link" to="/log-in">
@@ -92,7 +97,7 @@ const Navigation = () => {
                         </div>
                         <div className={cookieAuth ? "logout-line" : "d-none"}>
                             <button type="button" className="mt-2 btn btn-light button-color mt-lg-0 mx-2">
-                                        <NavLink className="nav-link" to="/sign-out>">
+                                        <NavLink className="nav-link" to="/signout">
                                             Log-out
                                         </NavLink>
                                     </button>

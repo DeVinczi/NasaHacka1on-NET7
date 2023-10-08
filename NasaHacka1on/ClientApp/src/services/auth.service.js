@@ -1,42 +1,55 @@
-// interface CustomError {
-//     key: number;
-//     messages: string[];
-// }
+const clearCookie = (name) => {
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
+};
 
 class AuthService {
-  #url = "/api/account/";
+    #url = "/api/account/";
 
-  async createAccount(user) {
-    const url = this.#url + "sign-up";
+    async createAccount(user) {
+        const url = this.#url + "sign-up";
 
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    });
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(user),
+        });
 
-    const responseData = await response.json();
+        const responseData = await response.json();
 
-    return responseData;
-  }
+        return responseData;
+    }
 
-  async login(user) {
-    const url = this.#url + "sign-in";
+    async logout() {
+        const url = this.#url + "sign-out";
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(),
+        });
+        
+        return;
+    }
 
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    });
+    async login(user) {
+        const url = this.#url + "sign-in";
 
-    const responseData = await response.json();
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(user),
+        });
 
-    return responseData;
-  }
+        const responseData = await response.json();
+
+        return responseData;
+    }
+
 }
 
 const authService = new AuthService();

@@ -48,7 +48,6 @@ const Login = () => {
 
     const user = { email, password };
     const response = authService.login(user);
-    console.log('login component: ', response);
 
     resetEmailInput();
     resetPasswordInput();
