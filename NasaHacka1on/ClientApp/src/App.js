@@ -63,6 +63,9 @@ const router = createBrowserRouter([
         element: <SignOut />,
         errorElement: <Error />,
         }
+        path: "/my-account",
+        element: <MyAccount />
+        errorElement: <Error/>
     ],
   },
 ]);

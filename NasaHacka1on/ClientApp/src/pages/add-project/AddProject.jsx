@@ -38,10 +38,59 @@ const AddProject = () => {
     reset: resetPasswordInput,
   } = useInput(isNotEmpty);
 
-  //form validation
-  let isFormValid = false;
+    //dev input
+    const {
+        value: devEnv,
+        handleValueChange: devEnvHandle,
+        hasError: devEnvError,
+        isValid: devEnvValidation,
+        reset: devEnvReset,
+        handleInputBlur: devEnvBlur
+    } = useInput(isNotEmpty);
 
-  if (isProjectNameValid && isDescriptionValid && isPasswordValid) {
+    //maintainer-location
+    const {
+        value: maintainerLocation,
+        handleValueChange: maintainerLocationChange,
+        reset: maintainerLocationReset,
+        isValid: maintainerIsValid,
+        handleInputBlur: maintainerBlur,
+        hasError: maintainerHasError
+    } = useInput(isNotEmpty);
+
+    //idealContribution input
+    const {
+        value: idealContribution,
+        isValid: idealContributionValid,
+        hasError: idealContributionError,
+        reset: idealContributionReset,
+        handleValueChange: idealContributionValueChange,
+        handleInputBlur: idealContributionInputBlur,
+    } = useInput(isNotEmpty);
+
+
+  //form validation
+    let isFormValid = false;
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+
+        // Reset all input values after submission
+        resetProjectNameInput();
+        resetDescriptionInput();
+        resetPasswordInput();
+        devEnvReset();
+        maintainerLocationReset();
+        idealContributionReset();
+
+        // Reset other state values
+        setChosenTechOptions(null);
+        setChosenContributorOptions(null);
+        setChosenSubjectOptions(null);
+        setOverviewText('');
+        setContributingText('');
+    }
+  if (isProjectNameValid && isPasswordValid) {
     isFormValid = true;
   }
 
@@ -179,7 +228,6 @@ const AddProject = () => {
   const [chosenSubjectOptions, setChosenSubjectOptions] = useState(null);
 
   const handleSubjectOptions = (selectedOptions) => {
-    console.log(selectedOptions);
     setChosenSubjectOptions(selectedOptions.map((option) => option.value));
   };
 
@@ -200,7 +248,7 @@ const AddProject = () => {
             <div className="project-container mx-auto py-2 px-3 mt-5 border border-1 shadow ">
     <form
       className="container-sm mx-auto my-1 mt-4 d-flex flex-column justify-content-center align-items-center"
-      onSubmit={handleAddProject}
+                    onSubmit={handleAddProject }
                 ><p className="mb-2 h1 fs-3 col-12 col-md-10 fw-bold">Post your project</p>
                     <p className="mb-2 fs-6 col-12 col-md-10 pb-3 border-line">Fill form below to place your project on global board.</p>
                     <p className="mb-2 mt-2 fs-5 col-12 col-md-10 fw-bold">
@@ -248,51 +296,45 @@ const AddProject = () => {
         <label htmlFor="description" className="form-label ps-0">
           Description
         </label>
-        <input
-          type="text"
-          className={descriptionInputClasses}
-          id="description"
-          value={description}
-          onChange={handleDescriptionChange}
-          onBlur={handleDescriptionBlur}
-        />
+        <textarea
+          className="form-control"
+          id="overviewTextArea"
+          placeholder="Shortly describe your project. Limit is 1000 characters."
+          rows="3"
+          onChange={handleOverviewChange}
+        ></textarea>
         {hasDescriptionError && (
           <p className="text-danger mt-1">Please provide a description.</p>
         )}
-      </div>
+                    </div>
+                    <div className="mb-2 col-12 col-md-10">
+                        <label htmlFor="difficultyLevel" className="form-label">
+                            Difficulty level
+                        </label>
+                        <div className="input-group">
+                            <select
+                                className={`form-select ${projectNameInputClasses}`}
+                                id="difficultyLevel"
+                                value={projectName}
+                                onChange={handleProjectNameChange}
+                                onBlur={handleProjectNameBlur}
+                            >
+                                <option value="">Select difficulty level</option>
+                                <option value="1">1 - Very Easy</option>
+                                <option value="2">2 - Easy</option>
+                                <option value="3">3 - Moderate</option>
+                                <option value="4">4 - Difficult</option>
+                                <option value="5">5 - Very Difficult</option>
+                                <option value="6">6 - Extremely Difficult</option>
+                            </select>
+                            <div className="input-group-append">
+                            </div>
+                        </div>
+                        {hasProjectNameError && (
+                            <p className="text-danger mt-1">Please select a difficulty level.</p>
+                        )}
+                    </div>
 
-      <div className="mb-2 col-12 col-md-10">
-        <label htmlFor="description" className="form-label">
-          <i className="bi bi-link-45deg ps-0 me-1"></i>Website URL
-        </label>
-        <input
-          type="text"
-          className={descriptionInputClasses}
-          id="description"
-          value={password}
-          onChange={handlePasswordChange}
-          onBlur={handlePasswordBlur}
-        />
-        {hasPasswordError && (
-          <p className="text-danger mt-1">Please provide a valid password.</p>
-        )}
-      </div>
-      <div className="mb-2 col-12 col-md-10">
-        <label htmlFor="description" className="form-label">
-          <i className="bi bi-linkedin ps-1 me-2"></i>Linkedin URL
-        </label>
-        <input
-          type="text"
-          className={descriptionInputClasses}
-          id="description"
-          value={password}
-          onChange={handlePasswordChange}
-          onBlur={handlePasswordBlur}
-        />
-        {hasPasswordError && (
-          <p className="text-danger mt-1">Please provide a valid password.</p>
-        )}
-      </div>
 
       <div className="mb-2 col-12 col-md-10 row gx-1 mt-4">
         <div className="col-12 col-xl-10">
@@ -350,12 +392,15 @@ const AddProject = () => {
               type="text"
               className={descriptionInputClasses}
               id="description"
-              value={password}
-              onChange={handlePasswordChange}
-              onBlur={handlePasswordBlur}
+                                    value={devEnv}
+                                    onChange={devEnvHandle}
+                                    onError={devEnvError }
+                                    onBlur={devEnvBlur}
+                                    isValid={devEnvValidation}
+                                    onReset={devEnvReset}
               placeholder="milkyway.pl"
-            />
-            {hasPasswordError && (
+                                />
+                                {hasDescriptionError && (
               <p className="text-danger mt-1">
                 Please provide a valid password.
               </p>
@@ -369,10 +414,12 @@ const AddProject = () => {
             <input
               type="text"
               className={descriptionInputClasses}
-              id="description"
-              value={password}
-              onChange={handlePasswordChange}
-              onBlur={handlePasswordBlur}
+                                    id="description"
+                                    onReset={maintainerLocationReset}
+                                    onError={maintainerHasError}
+                                    value={maintainerLocation}
+                                    onChange={maintainerLocationChange}
+                                    onBlur={maintainerBlur}
               placeholder="Europe"
             />
             {hasPasswordError && (
@@ -382,25 +429,40 @@ const AddProject = () => {
             )}
           </div>
 
-          <div className="mb-2">
-            <label htmlFor="description" className="form-label">
-              Ideal contributor effort
-            </label>
-            <input
-              type="text"
-              className={descriptionInputClasses}
-              id="description"
-              value={password}
-              onChange={handlePasswordChange}
-              onBlur={handlePasswordBlur}
-              placeholder="1/month"
-            />
-            {hasPasswordError && (
-              <p className="text-danger mt-1">
-                Please provide a valid password.
-              </p>
-            )}
-          </div>
+                            <div className="mb-2 col-12 col-md-10">
+                                <label htmlFor="idealContribution" className="form-label">
+                                    Contributor effort
+                                </label>
+                                <div className="input-group">
+                                    <select
+                                        className={`form-select ${descriptionInputClasses}`}
+                                        id="idealContribution"
+                                        value={idealContribution}
+                                        onChange={idealContributionValueChange}
+                                        onBlur={idealContributionInputBlur}
+                                    >
+                                        <option value="">Select days in a month</option>
+                                        <option value="1">1 day</option>
+                                        <option value="2">2 days</option>
+                                        <option value="3">3 days</option>
+                                        <option value="4">4 days</option>
+                                        <option value="5">5 days</option>
+                                        <option value="6">6 days</option>
+                                        <option value="7">7 days</option>
+                                        <option value="8">8 days</option>
+                                        <option value="9">9 days</option>
+                                        <option value="10">10 days</option>
+                                        <option value="15">15 days</option>
+                                        <option value="20">20 days</option>
+                                        <option value="25">25 days</option>
+                                        <option value="30">30 days</option>
+                                    </select>
+                                </div>
+                                {idealContributionError && (
+                                    <p className="text-danger mt-1">Please select the ideal contributor effort.</p>
+                                )}
+                            </div>
+
         </div>
       </div>
 
@@ -413,7 +475,7 @@ const AddProject = () => {
         <textarea
           className="form-control"
           id="overviewTextArea"
-          placeholder="What is your project about? What does it do?"
+          placeholder="Long description. Here you can describe any thing you want."
           rows="3"
           onChange={handleOverviewChange}
         ></textarea>
@@ -433,9 +495,10 @@ const AddProject = () => {
       </div>
 
       <button
-        type="submit"
+                        type="submit"
                         className="btn btn-dark btn-submit-project button button-border"
-        disabled={!isFormValid}
+                        disabled={!isFormValid}
+                        onClick={handleFormSubmit}
       >
         Create project
       </button>

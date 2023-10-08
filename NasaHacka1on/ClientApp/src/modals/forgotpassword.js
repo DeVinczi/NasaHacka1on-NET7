@@ -11,9 +11,6 @@ const ForgotPasswordModal = () => {
     const handleSubmit = async () => {
         var user = { email };
         var response = await authService.forgotPassword(user);
-        console.log(response)
-        console.log('Email submitted:', email);
-        return response;
     };
 
     return (
@@ -21,7 +18,7 @@ const ForgotPasswordModal = () => {
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="forgotPasswordModalLabel">Forgot Password?</h5>
+                        <h5 className="modal-title" id="forgotPasswordModalLabel">Reset your password</h5>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
