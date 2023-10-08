@@ -46,7 +46,7 @@ class AuthService {
         });
 
         const responseData = await response.json();
-
+        window.location.reload();
         return responseData;
     }
 

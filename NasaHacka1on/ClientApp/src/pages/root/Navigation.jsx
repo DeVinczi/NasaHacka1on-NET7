@@ -80,7 +80,7 @@ const Navigation = () => {
                                 </NavLink>
                             </li>
                         </ul>
-                        <div className={cookieAuth ? "d-none" : "d-flex"}>
+                        <div className={cookieAuth ? "d-none" : "d-flex moja"}>
                             <ul className="navbar-nav mb-2 mb-lg-0 mx-2">
                                 <li className="nav-item borderline">
                                     <NavLink className="nav-link" to="/log-in">
@@ -88,7 +88,7 @@ const Navigation = () => {
                                     </NavLink>
                                 </li>
                             </ul>
-                            <button type="button" className="btn btn-light button-color ms-lg-2 mx-2">
+                            <button type="button" className="btn btn-light  button-color ms-lg-2 mx-2">
                                 <NavLink className="nav-link" to="/sign-up">
                                     Sign up
                                 </NavLink>
@@ -96,13 +96,6 @@ const Navigation = () => {
 
                         </div>
                         <div className={cookieAuth ? "logout-line d-flex" : "d-none"}>
-                            <ul className="navbar-nav mb-2 mb-lg-0 mx-2">
-                                <li className="nav-item borderline">
-                                    <NavLink className="nav-link" to={cookieAuth ? "/my-account":"/log-in"}>
-                                        My Account
-                                    </NavLink>
-                                </li>
-                            </ul>
                             <button type="button" className="mt-2 btn btn-light button-color mt-lg-0 mx-2">
                                         <NavLink className="nav-link" to="/signout">
                                             Log-out

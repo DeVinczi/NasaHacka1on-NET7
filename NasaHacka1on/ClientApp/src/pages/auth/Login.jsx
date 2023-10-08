@@ -51,6 +51,8 @@ const Login = () => {
     const user = { email, password };
     const response = authService.login(user);
 
+      const email = {}
+
     resetEmailInput();
     resetPasswordInput();
     // navigate("/projects");

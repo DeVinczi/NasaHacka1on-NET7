@@ -422,10 +422,24 @@ a,
     .borderline {
         border-right: none;
         border-top: solid 1px gray;
+        
+    }
+    .boredline-sec{
+        border-top: solid 0px gray;
+    }
+    .moja{
+        flex-direction:column;
+        margin-bottom:0.5rem;
+    }
+    .moja-2{
+        width:20%;
     }
 }
-@media(min-width:970px){
+@media(min-width:980px){
     .logout-line {
         border-top: solid 0px gray !important;
+    }
+    .borderline-sec{
+        border-right: solid 1px gray;
     }
 }
