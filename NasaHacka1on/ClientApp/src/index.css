@@ -264,8 +264,12 @@ footer {
   border-right: solid 1px grey;
 }
 
+.logout-line {
+    border-top: solid 1px grey !important;
+}
+
 h1:focus {
-  outline: none;
+    outline: none;
 }
 
 
@@ -418,5 +422,10 @@ a,
     .borderline {
         border-right: none;
         border-top: solid 1px gray;
+    }
+}
+@media(min-width:970px){
+    .logout-line {
+        border-top: solid 0px gray !important;
     }
 }

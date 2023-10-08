@@ -1,16 +1,27 @@
+import Projects from "../projects/Projects.jsx"
+import './findproject.css'
 const FindProject = () => {
-    return
-        <div class="p-4 bg-white flex flex-col w-full rounded-lg border border-light-type-disabled" style="max-width: 400px;">
-        <div class="flex-grow">
-            <div class="flex gap-4 items-center">
-                    <h3 class="font-semibold text-light-type text-xl flex items-center gap-2">
-                        <a class="supports-hover:hover:text-light-interactive" href="/juspay/hyperswitch">Hyperswitch</a>
-                    </h3>
+    
+    return (
+        <div>
+
+            <div className="container">
+                <div className="search-container ">
+                    <div className="d-flex input-group mb-3 mt-3 ms-2 style">
+                        <input type="text" className="form-control" placeholder="Find your next open source project" aria-label="Search" aria-describedby="basic-addon2"/>
+                            <div className="input-group-append">
+                                <button className="btn btn-primary" type="button">Search</button>
+                            </div>
+                    </div>
                 </div>
-                <p class="text-sm text-light-type mt-2 overflow-hidden" style="-webkit-line-clamp: 3; -moz-box-orient: vertical; display: -webkit-box; height: 60px; max-height: 60px; line-height: 20px;">An Open Source Financial Switch to make Payments fast, reliable and affordable
-                </p>
-                </div>
-                </div>
+            </div>
+
+
+
+
+            <Projects />
+        </div>
+    );
     
 };
 

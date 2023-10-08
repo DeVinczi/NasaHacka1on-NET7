@@ -1,5 +1,4 @@
-﻿using Gybs.Logic.Operations.Factory;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authorization;
@@ -16,26 +15,8 @@ public class UsersLoginController : CommunityCodeHubController
     private const string Google = Route + "/google";
     private const string Facebook = Route + "/facebook";
 
-    private readonly IOperationFactory _operationFactory;
-    private readonly IHttpContextAccessor _httpContextAccessor;
-
-    public UsersLoginController(
-        IOperationFactory operationFactory,
-        IHttpContextAccessor httpContextAccessor)
+    public UsersLoginController()
     {
-        _operationFactory = operationFactory;
-        _httpContextAccessor = httpContextAccessor;
-    }
-
-    [AllowAnonymous]
-    [HttpGet, Route(Route)]
-    public async Task<IActionResult> GithubClaim()
-    {
-        var x = _httpContextAccessor.HttpContext.User.Claims.Select(x => new { x.Type, x.Value }).ToList();
-        await Console.Out.WriteLineAsync(x.ToString());
-        var z = await _httpContextAccessor.HttpContext.GetTokenAsync("access_token");
-        var zz = await _httpContextAccessor.HttpContext.GetTokenAsync("prompt");
-        return Ok();
     }
 
     [AllowAnonymous]
@@ -51,25 +32,23 @@ public class UsersLoginController : CommunityCodeHubController
 
     [AllowAnonymous]
     [HttpGet, Route(Google)]
-    public async Task<IResult> GoogleLogin()
+    public ActionResult GoogleLogin()
     {
-        return Results.Challenge(
+        return Challenge(
             new AuthenticationProperties
             {
-                RedirectUri = "https://localhost:7120"
-            },
-            authenticationSchemes: new List<string>() { GoogleDefaults.AuthenticationScheme });
+                RedirectUri = "https://localhost:44418"
+            }, GoogleDefaults.AuthenticationScheme);
     }
 
     [AllowAnonymous]
     [HttpGet, Route(Facebook)]
-    public async Task<IResult> FacebookLogin()
+    public ActionResult FacebookLogin()
     {
-        return Results.Challenge(
+        return Challenge(
             new AuthenticationProperties
             {
-                RedirectUri = "https://localhost:7120"
-            },
-            authenticationSchemes: new List<string>() { FacebookDefaults.AuthenticationScheme });
+                RedirectUri = "https://localhost:44418"
+            }, FacebookDefaults.AuthenticationScheme);
     }
 }

@@ -201,8 +201,8 @@ const AddProject = () => {
     <form
       className="container-sm mx-auto my-1 mt-4 d-flex flex-column justify-content-center align-items-center"
       onSubmit={handleAddProject}
-                ><p className="mb-2 h1 fs-4 col-12 col-md-10 fw-bold">Post your project</p>
-                    <p className="mb-2 fs-6 col-12 col-md-10 pb-3 border-bottom">Fill form below to place your project on global board.</p>
+                ><p className="mb-2 h1 fs-3 col-12 col-md-10 fw-bold">Post your project</p>
+                    <p className="mb-2 fs-6 col-12 col-md-10 pb-3 border-line">Fill form below to place your project on global board.</p>
                     <p className="mb-2 mt-2 fs-5 col-12 col-md-10 fw-bold">
         Common information
       </p>

@@ -1,5 +1,6 @@
 ﻿using Gybs.Logic.Operations.Factory;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using NasaHacka1on.BusinessLogic.Commands.Account;
 using NasaHacka1on.Models;
@@ -82,27 +83,35 @@ namespace NasaHacka1on.Web.Account
             return Ok();
         }
 
-        //    [HttpPost, Route(Route + "reset-password")]
-        //    public async Task<IActionResult> ResetPassword(ResetPasswordWebModel webModel)
-        //    {
-        //        var result = await _operationFactory
-        //            .Create<ResetPasswordCommand>(c =>
-        //            {
-        //                c.Email = webModel.Email.Trim().ToLower();
-        //                c.Token = webModel.Token;
-        //                c.Password = webModel.Password;
-        //                c.ConfirmPassword = webModel.ConfirmPassword;
-        //                c.UserId = webModel.User;
-        //            })
-        //            .HandleAsync();
+        [HttpPost, Route(Route + "sign-out")]
+        public async Task<IActionResult> SignOutUser()
+        {
+            await _signInManager.SignOutAsync(IdentityConstants.ApplicationScheme);
 
-        //        if (!result.HasSucceeded)
-        //        {
-        //            return BadRequest(result.Errors);
-        //        }
+            return Ok();
+        }
 
-        //        return Ok();
-        //    }
+        [HttpPost, Route(Route + "reset-password")]
+        public async Task<IActionResult> ResetPassword(ResetPasswordWebModel webModel)
+        {
+            var result = await _operationFactory
+                .Create<ResetPasswordCommand>(c =>
+                {
+                    c.Email = webModel.Email.Trim().ToLower();
+                    c.Token = webModel.Token;
+                    c.Password = webModel.Password;
+                    c.ConfirmPassword = webModel.ConfirmPassword;
+                    c.UserId = webModel.User;
+                })
+                .HandleAsync();
+
+            if (!result.HasSucceeded)
+            {
+                return BadRequest(result.Errors);
+            }
+
+            return Ok();
+        }
 
         //    [HttpPost, Route(Route + "request-change-password")]
         //    public async Task<IActionResult> RequestChangePassword(ChangePasswordWebModel webModel)

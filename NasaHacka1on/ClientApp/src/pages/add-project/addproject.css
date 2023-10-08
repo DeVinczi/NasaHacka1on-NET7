@@ -1,4 +1,8 @@
-﻿.project-container {
+﻿.border-line {
+    border-bottom: 1px #6967dd solid;
+}
+
+.project-container {
     background-color: #fff;
     border-radius: 10px;
 }
