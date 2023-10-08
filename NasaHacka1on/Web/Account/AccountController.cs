@@ -13,18 +13,15 @@ namespace NasaHacka1on.Web.Account
     {
         private readonly IOperationFactory _operationFactory;
         private readonly ISignInManager _signInManager;
-        private readonly IHttpContextAccessor _httpContextAccessor;
 
         private const string Route = "/api/account/";
 
         public LoginPasswordAccountController(
             IOperationFactory operationFactory,
-            ISignInManager signInManager,
-            IHttpContextAccessor httpContextAccessor)
+            ISignInManager signInManager)
         {
             _operationFactory = operationFactory;
             _signInManager = signInManager;
-            _httpContextAccessor = httpContextAccessor;
         }
 
         [AllowAnonymous]

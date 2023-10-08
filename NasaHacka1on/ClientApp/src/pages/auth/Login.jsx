@@ -4,6 +4,8 @@ import { isNotEmpty, isEmail } from '../../utils/validators';
 import useInput from '../../hooks/use-input';
 import authService from '../../services/auth.service';
 
+import ForgotPasswordModal from '../../modals/forgotpassword';
+
 const Login = () => {
   const navigate = useNavigate();
 
@@ -119,9 +121,14 @@ const Login = () => {
         >
           Log in
               </button>
-              <div className='mt-3 mb-2 text-secondary' role='button'>
-                  Forgot password?
+              <div>
+                  <div className='mt-3 mb-2 text-secondary' role='button' data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">
+                      Forgot password?
+                  </div>
+
+                  <ForgotPasswordModal />
               </div>
+              
       </form>
     </AuthWrapper>
   );

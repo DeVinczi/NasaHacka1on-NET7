@@ -39,6 +39,7 @@
 
 <ItemGroup>
 	<Folder Include="BusinessLogic\Queries\" />
+	<Folder Include="ClientApp\src\modals\" />
 	<Folder Include="ClientApp\src\pages\sign-out\" />
 </ItemGroup>
 <ItemGroup>

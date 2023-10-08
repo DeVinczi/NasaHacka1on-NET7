@@ -50,6 +50,22 @@ class AuthService {
         return responseData;
     }
 
+    async forgotPassword(email) {
+        const url = this.#url + "forgot-password";
+
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(email),
+        });
+
+        const responseData = await response.json();
+
+        return responseData;
+    }
+
 }
 
 const authService = new AuthService();

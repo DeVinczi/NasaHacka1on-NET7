@@ -59,8 +59,6 @@ const Signup = () => {
     const user = { displayName: username, email, password };
 
     const response = authService.createAccount(user);
-    console.log('z komponentu: ', response);
-
     resetUsernameInput();
     resetEmailInput();
     resetPasswordInput();
