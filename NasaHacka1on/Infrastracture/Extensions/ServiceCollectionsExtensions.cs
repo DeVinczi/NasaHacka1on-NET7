@@ -116,8 +116,8 @@ internal static class ServiceCollectionsExtensions
             {
                 o.SignInScheme = IdentityConstants.ApplicationScheme;
 
-                o.ClientId = "623cd33a318d54648bf1";
-                o.ClientSecret = "b8ee1c0f51d94505508904c4fbb1d32976aed567";
+                o.ClientId = "";
+                o.ClientSecret = "";
 
                 o.AuthorizationEndpoint = "https://github.com/login/oauth/authorize";
                 o.AuthorizationEndpoint += "?" + Prompt.ForceLogin;
@@ -175,8 +175,8 @@ internal static class ServiceCollectionsExtensions
             {
                 o.SignInScheme = IdentityConstants.ApplicationScheme;
 
-                o.AppId = "3990509061237234";
-                o.AppSecret = "200ace445ef49c83232f1d554993c638";
+                o.AppId = "";
+                o.AppSecret = "";
                 o.CallbackPath = "/signin-facebook";
                 o.AuthorizationEndpoint = "https://www.facebook.com/v18.0/dialog/oauth";
                 o.AuthorizationEndpoint += "?" + Prompt.ForceLogin;
